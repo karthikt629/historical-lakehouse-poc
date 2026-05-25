@@ -1,0 +1,27 @@
+sync_db_path: /user/hive/warehouse/sync_db.db
+
+databases:
+  - name: sales_db
+    hdfs_path: /user/hive/warehouse/sales_db.db
+    tables:
+      - name: orders
+        format: csv
+        delimiter: ","
+      - name: customers
+        format: parquet
+
+  - name: inventory_db
+    hdfs_path: /user/hive/warehouse/inventory_db.db
+    tables:
+      - name: stock
+        format: csv
+        delimiter: ","
+      - name: suppliers
+        format: parquet
+
+  - name: hr_db
+    hdfs_path: /user/hive/warehouse/hr_db.db
+    tables:
+      - name: employees
+        format: csv
+        delimiter: ","
