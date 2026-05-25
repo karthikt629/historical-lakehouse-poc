@@ -1,0 +1,32 @@
+created_at: '20260525_225455'
+migration_mode: full-load
+source:
+  path: /user/hive/warehouse/sync_db.db
+  type: hdfs_parquet
+tables:
+- parquet_path: /user/hive/warehouse/sync_db.db/orders
+  row_count: 5000
+  source_db: sales_db
+  table_name: orders
+- parquet_path: /user/hive/warehouse/sync_db.db/customers
+  row_count: 1000
+  source_db: sales_db
+  table_name: customers
+- parquet_path: /user/hive/warehouse/sync_db.db/stock
+  row_count: 3000
+  source_db: inventory_db
+  table_name: stock
+- parquet_path: /user/hive/warehouse/sync_db.db/suppliers
+  row_count: 500
+  source_db: inventory_db
+  table_name: suppliers
+- parquet_path: /user/hive/warehouse/sync_db.db/employees
+  row_count: 2000
+  source_db: hr_db
+  table_name: employees
+target:
+  database: lakehouse_db
+  format: iceberg
+  s3_path: s3://your-lakehouse-bucket/sync-db/
+  type: s3_iceberg
+task_id: sync-task-20260525_225455
